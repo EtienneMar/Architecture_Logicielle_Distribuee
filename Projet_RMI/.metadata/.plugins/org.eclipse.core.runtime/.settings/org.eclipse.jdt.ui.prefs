@@ -1,0 +1,10 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="rmi.server.workflow.AnimalImpl"><rhs name\="rmi.server.workflow.AnimalImpl"/></lhs><lhs name\="java.rmi.Remote"><rhs name\="rmi.server.workflow.AnimalImpl"/><rhs name\="rmi.server.workflow.DossierImpl"/><rhs name\="rmi.client.workflow.ClientImpl"/></lhs><lhs name\="rmi.client.workflow.IAnimal"><rhs name\="rmi.server.workflow.AnimalImpl"/></lhs><lhs name\="rmi.client.workflow.IDossier"><rhs name\="rmi.server.workflow.DossierImpl"/></lhs><lhs name\="java.rmi.server.UnicastRemoteObject"><rhs name\="rmi.server.workflow.DossierImpl"/></lhs><lhs name\="java.rmi.server.RemoteServer"><rhs name\="rmi.server.workflow.DossierImpl"/></lhs><lhs name\="java.rmi.server.RemoteObject"><rhs name\="rmi.server.workflow.DossierImpl"/></lhs><lhs name\="rmi.server.workflow.DossierImpl"><rhs name\="rmi.server.workflow.DossierImpl"/></lhs><lhs name\="rmi.commons.workflow.IClient"><rhs name\="rmi.client.workflow.ClientImpl"/></lhs><lhs name\="java.lang.SecurityManager"><rhs name\="java.lang.SecurityManager"/></lhs></history>
+content_assist_number_of_computers=12
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.ui.formatterprofiles.version=22
+spelling_locale_initialized=true
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

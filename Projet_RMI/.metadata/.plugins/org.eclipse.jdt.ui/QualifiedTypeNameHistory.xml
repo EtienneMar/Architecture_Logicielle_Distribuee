@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="rmi.client.workflow.IDossier"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="java.rmi.registry.Registry"/>
+    <fullyQualifiedTypeName name="java.rmi.registry.LocateRegistry"/>
+    <fullyQualifiedTypeName name="rmi.client.workflow.IAnimal"/>
+    <fullyQualifiedTypeName name="rmi.client.workflow.ICabinet"/>
+    <fullyQualifiedTypeName name="rmi.client.workflow.Species"/>
+    <fullyQualifiedTypeName name="rmi.server.workflow.DossierImpl"/>
+    <fullyQualifiedTypeName name="java.rmi.Remote"/>
+    <fullyQualifiedTypeName name="java.rmi.server.UnicastRemoteObject"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.ClientInfoStatus"/>
+    <fullyQualifiedTypeName name="java.lang.SecurityManager"/>
+    <fullyQualifiedTypeName name="rmi.client.workflow.ClientImpl"/>
+    <fullyQualifiedTypeName name="rmi.server.workflow.AnimalImpl"/>
+    <fullyQualifiedTypeName name="rmi.server.workflow.CabinetImpl"/>
+    <fullyQualifiedTypeName name="rmi.commons.workflow.ICabinet"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="rmi.commons.workflow.IClient"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="rmi.commons.workflow.IDossier"/>
+    <fullyQualifiedTypeName name="rmi.commons.workflow.IAnimal"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.rmi.RemoteException"/>
+</qualifiedTypeNameHistroy>

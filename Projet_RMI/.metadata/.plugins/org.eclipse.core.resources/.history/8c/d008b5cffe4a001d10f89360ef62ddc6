@@ -1,0 +1,36 @@
+package rmi.client.workflow;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+
+import rmi.commons.workflow.IAnimal;
+import rmi.commons.workflow.ICabinet;
+import rmi.commons.workflow.IClient;
+
+public class ClientImpl extends UnicastRemoteObject implements IClient{
+	private String username;
+	
+	protected ClientImpl() throws RemoteException{
+		super();
+	}
+	
+	protected ClientImpl (String name) throws RemoteException{
+		this.setUsername(name);
+	}
+	
+	public void setUsername(String username) throws RemoteException {
+		this.username = username;
+	}
+
+	@Override
+	public void alerte(String n) throws RemoteException {
+		System.out.println(n);	
+	}
+
+	@Override
+	public String getCabinetName () throws RemoteException {
+		return this.username;
+	}
+
+}
