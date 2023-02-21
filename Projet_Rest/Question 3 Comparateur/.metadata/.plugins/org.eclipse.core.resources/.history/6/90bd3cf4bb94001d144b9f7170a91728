@@ -1,0 +1,104 @@
+package hotel.rest.server;
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+
+import hotel.rest.server.model.AgencePartenaire;
+import hotel.rest.server.model.AgencePartenairePKID;
+import hotel.rest.server.model.CarteBancaire;
+import hotel.rest.server.model.Chambre;
+import hotel.rest.server.model.Client;
+import hotel.rest.server.model.Hotel;
+import hotel.rest.server.model.Reservation;
+import hotel.rest.server.repository.AgencePartenaireRepository;
+import hotel.rest.server.repository.CarteBancaireRepository;
+import hotel.rest.server.repository.ChambreRepository;
+import hotel.rest.server.repository.HotelRepository;
+import hotel.rest.server.repository.ReservationRepository;
+
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@EntityScan(basePackages = {"hotel.rest.server.model"})
+public class Application implements CommandLineRunner{
+	
+	
+	// Repository
+	@Autowired
+	private HotelRepository hotelRepository;
+	@Autowired
+	private AgencePartenaireRepository agencePartenaireRepository;
+	@Autowired
+	private CarteBancaireRepository carteBancaireRepository;
+	@Autowired
+	private ChambreRepository chambreRepository; 
+	@Autowired
+	private ReservationRepository reservationRepository; 
+
+//	@Autowired
+//	AgenceRepository agenceRepository;
+//	
+//	@Autowired
+//	HotelWebServiceURLRepository hotelWebServiceURLRepository;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+	
+		Hotel hotel = new Hotel("Progress", 3, "Belgique", "Bruxelles", 9, "Rue du Progrès", (float)50.85672, (float) 4.35878);
+		hotelRepository.save(hotel);
+		
+		AgencePartenairePKID agenceTripDreamPKID = new AgencePartenairePKID();
+		agenceTripDreamPKID.setLoginAgence("trip_log");
+		agenceTripDreamPKID.setPasswordAgence("tripDream");
+		AgencePartenaire agenceagenceTripDream = new AgencePartenaire(22, agenceTripDreamPKID, (float) 0.9, hotel);
+		
+		agencePartenaireRepository.save(agenceagenceTripDream);
+		
+		CarteBancaire cb = new CarteBancaire("1234567811111111", "02/24", 333); 
+		CarteBancaire cb1 = new CarteBancaire("1234567891234567", "08/25", 645); 		
+		cb.setIdCarteBancaire(1);
+		cb1.setIdCarteBancaire(2);
+		Client client = new Client("Polnareff", "Michel", cb);
+		Client client1 = new Client("Spriet", "Gauthier", cb1);
+		client.setId_client(1);
+		client1.setId_client(2); 
+		cb.setClient(client);
+		cb1.setClient(client1);
+		carteBancaireRepository.save(cb); 
+		carteBancaireRepository.save(cb1);
+		
+		
+		Chambre chambre10 = new Chambre(1, 10, 2, 80,"./src/main/java/Image_Chambre/pic4.jpg", hotel);
+
+		Chambre chambre20 = new Chambre(2, 20, 3, 95,"./src/main/java/Image_Chambre/pic5.jpg", hotel);
+	
+		
+		Chambre chambre30 = new Chambre(3, 30, 2, 85,"./src/main/java/Image_Chambre/pic6.jpg", hotel);
+		
+		chambreRepository.save(chambre10);
+		chambreRepository.save(chambre20);
+		chambreRepository.save(chambre30);
+		
+		
+		Reservation reservation1 = new Reservation(LocalDate.now(), LocalDate.now().plusDays(1), 2);	
+		reservation1.setClient(client1);
+		reservation1.setChambre(chambre10);
+		reservationRepository.save(reservation1);
+		
+		Reservation reservation2 = new Reservation(LocalDate.now().plusDays(4), LocalDate.now().plusDays(8), 2);	
+		reservation2.setClient(client1);
+		reservation2.setChambre(chambre10);
+		reservationRepository.save(reservation2);
+		
+	}
+
+}

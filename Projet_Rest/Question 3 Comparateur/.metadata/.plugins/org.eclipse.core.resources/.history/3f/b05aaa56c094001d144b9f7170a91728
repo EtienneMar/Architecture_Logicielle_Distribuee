@@ -1,0 +1,71 @@
+package hotel.rest.server.model;
+
+import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "hotelWebService")
+public class HotelWebServiceURL {
+	
+	@Column(name = "nomHotel")
+	private String nomHotel;
+	
+	@Id
+	@Column(name = "webServiceUrl")
+	private String webServiceURL;
+	
+	public HotelWebServiceURL() {}
+	
+	public HotelWebServiceURL(String nomHotel, String webServiceURL) {
+		this.setNomHotel(nomHotel);
+		this.setWebServiceURL(webServiceURL);
+	}
+
+	public String getNomHotel() {
+		return nomHotel;
+	}
+
+	public void setNomHotel(String nomHotel) {
+		this.nomHotel = nomHotel;
+	}
+
+	public String getWebServiceURL() {
+		return webServiceURL;
+	}
+
+	public void setWebServiceURL(String webServiceURL) {
+		this.webServiceURL = webServiceURL;
+	}
+	
+	@Override
+	public String toString() {
+		return "HotelWebServiceURL [nomHotel=" + nomHotel + ", webServiceURL=" + webServiceURL + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nomHotel, webServiceURL);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		HotelWebServiceURL other = (HotelWebServiceURL) obj;
+		return Objects.equals(nomHotel, other.nomHotel) && Objects.equals(webServiceURL, other.webServiceURL);
+	} 
+	
+	
+	
+	
+
+}

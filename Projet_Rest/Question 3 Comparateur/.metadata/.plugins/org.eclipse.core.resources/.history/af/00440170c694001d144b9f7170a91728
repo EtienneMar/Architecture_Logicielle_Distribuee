@@ -1,0 +1,188 @@
+package hotel.rest.server.model;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "chambre")
+public class Chambre {
+	
+	//Attributs
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "id_chambre")
+	private int  idChambre;
+
+	@Column(name = "numero_chambre")
+	private int numero;
+
+	@Column(name = "nombre_lits")
+	private int nbLits;
+
+	@Column(name = "prix_chambre")
+	private float prixChambre;
+
+	@Column(name = "path_picture")
+	private String ppicOfChamberByPathPicture;
+
+	@OneToOne(
+	fetch = FetchType.EAGER
+	)
+	@JoinColumn(name ="id_nom_hotel", foreignKey = @ForeignKey(name = "FK_nom_Hotel", foreignKeyDefinition = "foreign key chambre(id_nom_hotel) references hotel (nom)"))
+	@JsonBackReference
+	private Hotel hotel; 
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "chambre")
+	@JsonManagedReference
+	private List<Reservation> listReservation = new ArrayList<>();
+
+	// ********************** Constructeurs *************************
+
+	public Chambre() {}
+	
+	public Chambre (int numero, int nbLits, float prixChambre,
+			String picOfChamberByPathPicture) throws IOException {
+		this.setNumero(numero); 
+		this.setNbLits(nbLits); 
+		this.setPrixChambre(prixChambre);
+		this.setPicOfChamberByPathPicture(picOfChamberByPathPicture);
+	}
+	
+	public Chambre (int numero, int nbLits, float prixChambre,
+			String picOfChamberByPathPicture, Hotel hotel) throws IOException {
+		this.setNumero(numero); 
+		this.setNbLits(nbLits); 
+		this.setPrixChambre(prixChambre);
+		this.setPicOfChamberByPathPicture(picOfChamberByPathPicture);
+		this.setHotel(hotel);
+	}
+
+	public Chambre(int idChambre, int numero, int nbLits, float prixChambre, String picOfChamberByPathPicture,
+			Hotel hotel) {
+		super();
+		this.idChambre = idChambre;
+		this.numero = numero;
+		this.nbLits = nbLits;
+		this.prixChambre = prixChambre;
+		this.ppicOfChamberByPathPicture = picOfChamberByPathPicture;
+		this.hotel = hotel;
+	}
+
+	// ********************** accesseurs **************************
+
+
+	public int getNumero() {
+		return this.numero;
+	}
+	
+	public int getIdChambre() {
+		return idChambre;
+	}
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setIdChambre(int idChambre) {
+		this.idChambre = idChambre;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public List<Reservation> getListReservation() {
+		return listReservation;
+	}
+
+	public void setListReservation(List<Reservation> listReservation) {
+		this.listReservation = listReservation;
+	}
+
+	public void setNumero(int numeroI) {
+		if (numeroI >= 1) {
+			this.numero = numeroI;
+		} else {
+			System.err.println("Le num�ro de la chambre doit �tre sup�rieur � 0");
+		}
+	}
+
+	public int getNbLits() {
+		return this.nbLits;
+	}
+
+	public void setNbLits(int nbLitsI) {
+		if (nbLitsI > 0) {
+			this.nbLits = nbLitsI;
+		} else {
+			System.err.println("Le nombre de lits doit �tre sup�rieur � 0");
+		}
+	}
+
+	public float getPrixChambre() {
+		return this.prixChambre;
+	}
+
+	public void setPrixChambre(float prixChambreI) {
+		if (prixChambreI > 0.0) {
+			this.prixChambre = prixChambreI;
+		} else {
+			System.err.println("Le prix de la chambre doit �tre sup�rieur � 0");
+		}
+	}
+
+	public String getPicOfChamberByPathPicture() {
+		return ppicOfChamberByPathPicture;
+	}
+
+	public void setPicOfChamberByPathPicture(String picOfChamberByPathPicture) throws IOException {
+		ppicOfChamberByPathPicture = picOfChamberByPathPicture;
+	}
+	
+	//Méthodes
+	@Override
+	public String toString() {
+		return "Chambre [identifiant" + idChambre + ", numero=" + numero + ", nbLits=" + nbLits
+				+ ", prixChambre=" + prixChambre + ", PicOfChamberByPathPicture=" + ppicOfChamberByPathPicture + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ppicOfChamberByPathPicture, hotel, idChambre, listReservation, nbLits, numero, prixChambre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chambre other = (Chambre) obj;
+		return Objects.equals(ppicOfChamberByPathPicture, other.ppicOfChamberByPathPicture)
+				&& Objects.equals(hotel, other.hotel) && idChambre == other.idChambre
+				&& Objects.equals(listReservation, other.listReservation) && nbLits == other.nbLits
+				&& numero == other.numero
+				&& Float.floatToIntBits(prixChambre) == Float.floatToIntBits(other.prixChambre);
+	}
+
+}

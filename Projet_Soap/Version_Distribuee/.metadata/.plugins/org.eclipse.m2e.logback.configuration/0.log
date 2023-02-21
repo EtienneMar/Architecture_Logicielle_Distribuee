@@ -1,0 +1,86 @@
+2022-12-24 18:37:40,716 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-24 18:38:09,030 [Worker-9: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel.web.service.client:web.service.client:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Client\pom.xml.
+2022-12-24 18:38:10,432 [Worker-9: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel:web.service:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\pom.xml.
+2022-12-24 18:38:15,694 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service.client/src/main/java
+2022-12-24 18:38:15,694 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web.service.client/src/main/resources
+2022-12-24 18:38:15,694 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service.client/src/test/java
+2022-12-24 18:38:15,694 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web.service.client/src/test/resources
+2022-12-24 18:38:15,861 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service/src/main/java
+2022-12-24 18:38:15,861 [Worker-9: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service/src/test/java
+2022-12-24 18:38:15,980 [Worker-9: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 2 project(s) in 12 sec
+2022-12-24 18:38:17,014 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:17,016 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:38:17,022 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:17,023 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:38:17,985 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:17,995 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:38:17,998 [Worker-32: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:18,000 [Worker-32: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:38:19,896 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:19,897 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:38:19,900 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:19,902 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:38:19,914 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:19,917 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:38:19,921 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:38:19,922 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:39:24,530 [Worker-18: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:39:24,533 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:39:37,752 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:39:37,760 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:39:37,765 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:39:37,766 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:40:33,775 [Worker-33: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:40:33,776 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:40:33,778 [Worker-33: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:40:33,779 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:41:10,312 [Worker-27: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:41:10,314 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:41:10,316 [Worker-27: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:41:10,317 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:46:08,289 [Worker-39: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:46:08,292 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:46:08,294 [Worker-39: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:46:08,295 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:53:49,700 [Worker-14: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:53:49,701 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:53:49,703 [Worker-14: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:53:49,704 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:55:06,105 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:06,106 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:55:06,108 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:06,109 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:55:06,118 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:06,118 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:55:06,120 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:06,121 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:55:08,363 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:08,364 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:55:08,366 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:08,367 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:55:08,588 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:08,589 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:55:08,591 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:08,593 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:55:39,429 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:39,430 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 18:55:39,432 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:39,433 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-24 18:55:39,443 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:39,444 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:55:39,447 [Worker-41: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:55:39,447 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:59:19,382 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:59:19,383 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 18:59:19,386 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 18:59:19,388 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 19:00:09,880 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 19:00:09,882 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 19:00:09,884 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 19:00:09,886 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-24 19:00:30,578 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 19:00:30,579 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-12-24 19:00:30,581 [Worker-43: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-12-24 19:00:30,582 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-12-28 12:40:18,127 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-29 13:19:53,807 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

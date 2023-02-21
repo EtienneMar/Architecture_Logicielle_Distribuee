@@ -1,0 +1,166 @@
+package hotel.rest.server.model;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Objects;
+
+import javax.imageio.ImageIO;
+
+public class Offre extends Chambre {
+
+	//Attributs
+	public static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+	private ArrayList<String> disponibilitee = new ArrayList<>();
+	private float prixChambreWithReduction;
+	private int identifiant;
+	private String nomhotel;
+	private String adressehotel;
+	private int etoileshotel;
+	private byte[] picOfChamber;
+	
+	
+	//Constructeur 
+	public Offre(float coeffPromotion, Chambre chambre) throws IOException {
+		super(chambre.getNumero(), chambre.getNbLits(), chambre.getPrixChambre());
+		setNomhotel(chambre.getHotel().getNom());
+		setAdressehotel(chambre.getHotel().getNumRue()+" "+chambre.getHotel().getRue());
+		setEtoileshotel(chambre.getHotel().getEtoiles());
+		setIdentifiant(chambre.getIdChambre());
+		setDisponibiliteeWithArrayList(new ArrayList<Reservation>(chambre.getListReservation()));
+		setPrixChambreWithReduction(chambre.getPrixChambre() * coeffPromotion);
+//		setPicOfChamberByPathPicture(chambre.getPicOfChamberByPathPicture());
+	}
+	
+	//Accesseur
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Arrays.hashCode(picOfChamber);
+		result = prime * result + Objects.hash(adressehotel, disponibilitee, etoileshotel, identifiant, nomhotel,
+				prixChambreWithReduction);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Offre other = (Offre) obj;
+		return Objects.equals(adressehotel, other.adressehotel) && Objects.equals(disponibilitee, other.disponibilitee)
+				&& etoileshotel == other.etoileshotel && identifiant == other.identifiant
+				&& Objects.equals(nomhotel, other.nomhotel) && Arrays.equals(picOfChamber, other.picOfChamber)
+				&& Float.floatToIntBits(prixChambreWithReduction) == Float
+						.floatToIntBits(other.prixChambreWithReduction);
+	}
+
+	public byte[] getPicOfChamber() {
+		return picOfChamber;
+	}
+	public void setPicOfChamber(byte[] picOfChamber) {
+		this.picOfChamber = picOfChamber;
+	}
+
+	public int getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(int identifiant) {
+		this.identifiant = identifiant;
+	}
+
+	public ArrayList<String> getDisponibilitee() {
+		return disponibilitee;
+	}
+
+	public void setDisponibilitee(ArrayList<String> disponibilitee) {
+		this.disponibilitee = disponibilitee;
+	}
+
+	public void setPrixChambreWithReduction(float prixChambreWithReduction) {
+		this.prixChambreWithReduction = Math.round(prixChambreWithReduction);
+	}
+
+	public float getPrixChambreWithReduction() {
+		return prixChambreWithReduction;
+	}
+
+	//méthodes
+	public void setDisponibiliteeWithArrayList(ArrayList<Reservation> reservation) {
+		LocalDate today = LocalDate.now();
+		LocalDate end = LocalDate.of(today.getYear() + 1, today.getMonthValue(), today.getDayOfMonth());
+
+		if (reservation.isEmpty()) {
+			this.disponibilitee.add(today.format(dateTimeFormatter));
+			this.disponibilitee.add(end.format(dateTimeFormatter));
+		} else {
+			ArrayList<LocalDate> localDateDisponibilitee = new ArrayList<>();
+			localDateDisponibilitee.add(end);
+			localDateDisponibilitee.add(today);
+			for (int i = 0; i < reservation.size(); i++) {
+				localDateDisponibilitee.add(reservation.get(i).getDateArrivee().minusDays(1));
+				localDateDisponibilitee.add(reservation.get(i).getDateDepart().plusDays(1));
+			}
+			Collections.sort(localDateDisponibilitee);
+			for (int j = 0; j < localDateDisponibilitee.size(); j++) {
+				this.disponibilitee.add(localDateDisponibilitee.get(j).format(dateTimeFormatter));
+			}
+		}
+
+	}
+
+	public void setPicOfChamberByPathPicture(String pathPicure) throws IOException {
+		File fichier = new File(pathPicure);
+		BufferedImage fileToByteCode = ImageIO.read(fichier);
+		ByteArrayOutputStream ByteForXML = new ByteArrayOutputStream();
+		ImageIO.write(fileToByteCode, "jpg", ByteForXML);
+		this.picOfChamber = ByteForXML.toByteArray();
+	}
+
+	
+	
+	public String getNomhotel() {
+		return nomhotel;
+	}
+
+	public void setNomhotel(String nomhotel) {
+		this.nomhotel = nomhotel;
+	}
+
+	public String getAdressehotel() {
+		return adressehotel;
+	}
+
+	public void setAdressehotel(String adressehotel) {
+		this.adressehotel = adressehotel;
+	}
+
+	public int getEtoileshotel() {
+		return etoileshotel;
+	}
+
+	public void setEtoileshotel(int etoileshotel) {
+		this.etoileshotel = etoileshotel;
+	}
+
+	@Override
+	public String toString() {
+		return "Offre [disponibilitee=" + disponibilitee + ", prixChambreWithReduction=" + prixChambreWithReduction
+				+ ", identifiant=" + identifiant + ", picOfChamber=" +picOfChamber + ", nomhotel="
+				+ nomhotel + ", adressehotel=" + adressehotel + ", etoileshotel=" + etoileshotel + "]";
+	}
+
+}

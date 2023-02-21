@@ -1,0 +1,5 @@
+package agence.rest.server;
+
+public class Application {
+
+}

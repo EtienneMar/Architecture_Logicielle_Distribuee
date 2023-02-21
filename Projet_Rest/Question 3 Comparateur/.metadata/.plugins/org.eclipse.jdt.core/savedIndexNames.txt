@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\33683\Desktop\Projet Rest\Question 3 Comparateur\.metadata\.plugins\org.eclipse.jdt.core
+3300028489.index
+3805477304.index
+1865797976.index
+710219040.index
+1645659615.index
+2342805969.index
+4226992385.index

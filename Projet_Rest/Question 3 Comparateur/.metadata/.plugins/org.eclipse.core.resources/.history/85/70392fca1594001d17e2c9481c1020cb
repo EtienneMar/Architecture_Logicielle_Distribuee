@@ -1,0 +1,343 @@
+package rest.agence.cli;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Objects;
+
+import javax.swing.JFrame;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
+import rest.agence.models.AgencePartenaire;
+import rest.agence.models.Offre;
+
+@Component
+public class AgenceServiceCLI extends AbstractMain implements CommandLineRunner{
+	//Attribut
+	@Autowired
+	private RestTemplate proxy;
+
+	//Attribut Commun aux deux webService
+	private static int identifiantAgence = -1;
+	public static String passwordAgenceToProxy = null;
+	public static String dateArriveeToProxy = null;
+	public static String dateDepartToProxy = null;
+	public static int nbPersonToProxy;
+  
+	private static IntegerInputProcessor integerInputProcessor;
+	private static DateInputProcessorFirstDateArrivee dateInputProcessor;
+	private static FloatPriceInputProcessorFirstPriceMin intervalleFloatInputProcessor;
+	private static CardExpirationInputProcessor cardExpirationInputProcessor;
+	
+	private static HashMap<String,String> localhostPort = new HashMap<>();
+	
+	private static String URI_HOTEL_LA_VERRERIE; //<service_url>/employees
+	
+	private static AgencePartenaire selectour = new AgencePartenaire(1, "sel_log", "selectour");
+	
+	//équivalent méthode main
+	@Override
+	public void run(String... args) throws Exception {
+		 BufferedReader inputReader; 
+		 String userInput = "";
+		 try {
+			inputReader = new BufferedReader(new InputStreamReader(System.in));
+			SetTestServiceURL(inputReader);
+			localhostPort.put("La Verrerie",SERVICE_URL+"8080/hotelservice/api/hotel");
+			localhostPort.put("Progress",SERVICE_URL+"5555/hotelservice/api/hotel");
+			do {
+				menu(); 
+				userInput = inputReader.readLine();
+				processUserInput(inputReader, userInput, proxy);
+				Thread.sleep(3000);
+			} while (! userInput.equals(QUIT));
+			
+		} catch (IOException e ) {
+			e.printStackTrace();
+		} 
+	}
+	@Override
+	protected boolean validServiceUrl() {
+		return SERVICE_URL.equals("http://localhost:");
+	}
+
+	@Override
+	protected void menu() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(QUIT+".Quit."); 
+		builder.append("\n Taper 1. Pour consulter les Offres"); 
+		builder.append("\n Taper 2. Pour effectuer une réservation"); 
+		System.out.println(builder);
+	}
+	
+	private void processUserInput(BufferedReader reader, String userInput, RestTemplate proxy) {
+		try {
+			switch (userInput) {
+			case "1": {
+				System.out.println("CLI consultation :");
+				
+HashMap<String, ArrayList<String>> KeyPaysValueVille = new HashMap<>();
+				
+			    for (String hotelAdress : localhostPort.values()) {
+					String uriNomPays = hotelAdress+"/nompays"; 
+					String paysAddToList = proxy.getForObject(uriNomPays, String.class);
+					
+					String uriNomVille = hotelAdress+"/nomville"; 
+					String VilleAddToList = proxy.getForObject(uriNomVille, String.class);
+		
+	
+					if (! KeyPaysValueVille.containsKey(paysAddToList)) {
+						KeyPaysValueVille.put(paysAddToList, new ArrayList<String>());
+					}
+					
+					if (! KeyPaysValueVille.get(paysAddToList).contains(VilleAddToList)) {
+							KeyPaysValueVille.get(paysAddToList).add(VilleAddToList); 
+					}
+			    }
+
+				String pays; 
+				do {
+					System.out.println("Veuillez entrée un pays parmi la liste proposée :\n"+KeyPaysValueVille.keySet());
+					pays = reader.readLine();
+				} while (! KeyPaysValueVille.containsKey(pays));
+				
+				String ville; 
+				do {
+					System.out.println("Veuillez entrée une ville parmi la liste proposée :\n"+KeyPaysValueVille.get(pays).toString());
+					ville = reader.readLine();
+				} while (! KeyPaysValueVille.get(pays).contains(ville));
+				
+				
+//				indentifiantAgenceInputTest(reader);
+//				
+//				passwordAgenceInputTest(reader);
+				
+				dateInputTest(reader); 
+				
+				nbPersonInputTest(reader);
+				
+				
+				
+				integerInputProcessor = new IntegerInputProcessor(reader, 
+						"Quelle catégorie d'hotel recherchez-vous (nombres d'étoiles) : 1, 2, 3, 4 ou 5 étoiles ?");
+				int etoiles = 0;
+				do {
+					etoiles = integerInputProcessor.process();
+					if (etoiles <= 0 || etoiles >=6) {
+						System.err.println("Le nombre d'étoiles d'un hotel ne peut être compris qu'entre 1 et 5 !");
+					}
+				} while (etoiles <= 0 || etoiles >=6);
+				
+				intervalleFloatInputProcessor = new FloatPriceInputProcessorFirstPriceMin(reader, 
+						"Veuillez indiquer le prix minimum différent de 0 pour une intervalle de prix :");
+				ArrayList<Float> prixIntervalleStockInput = new ArrayList<>();
+				prixIntervalleStockInput.addAll(intervalleFloatInputProcessor.prixIntervalle());
+				float prixMinToProxy = prixIntervalleStockInput.get(0);
+				float prixMaxToProxy = prixIntervalleStockInput.get(1);
+				System.out.println();
+
+				ArrayList<Offre> listOffreToGUI = new ArrayList<>();
+				for (String hotelAdress : localhostPort.values()) {
+					String uri = hotelAdress+"/consultation/id_agence="+identifiantAgence+"/password_agence="+passwordAgenceToProxy+""
+							+ "/date_arrivee="+dateArriveeToProxy+ "/date_depart="+dateDepartToProxy+"/nbPersonne="+nbPersonToProxy+""
+							+ "/pays="+pays+"/ville="+ville+"/etoiles="+etoiles+"/prixMin="+prixMinToProxy+"/prixMax="+prixMaxToProxy+"";
+					Offre [] listOffre = proxy.getForObject(uri, Offre[].class);
+					if (Arrays.asList(listOffre).isEmpty()) {
+						String nomHotel = getKeyByValue(localhostPort, hotelAdress); 
+						System.out.println("Pour l'hotel " + nomHotel + " désolé nous n'avons pas trouvée d'offre correspondant à vos critère de recherche");
+						System.out.println();
+					}else {
+						Arrays.asList(listOffre).forEach(System.out::println);
+						for (Offre offre : Arrays.asList(listOffre)) {
+							System.out.println("TEST");
+							listOffreToGUI.add(offre);
+						}
+						listOffreToGUI.toString(); 
+						System.out.println("end");
+						System.out.println();
+					}
+				}
+		
+					
+				
+				break;
+			}
+			
+			case "2": {
+				System.out.println("CLI Reservation : ");
+				
+				MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+				
+				indentifiantAgenceInputTest(reader);
+				params.add("identifiantAgence", Integer.toString(identifiantAgence));
+				
+				String loginAgence;
+				do {
+					System.out.println("Veuillez entrée le login de l'agence");
+					loginAgence = reader.readLine();
+				} while (! loginAgence.equals(selectour.getLogin()));
+				
+			    params.add("loginAgence", loginAgence);
+				
+			    passwordAgenceInputTest(reader);
+			    params.add("passwordAgence", passwordAgenceToProxy);
+			  
+				
+				HashMap<String, ArrayList<String>> KeyNomHotelValueIdOffre= new HashMap<>();
+				
+			    for (String hotelAdresse : localhostPort.values()) {
+					String uriNomHotel = hotelAdresse+"/nomhotel"; 
+					String hotelAddToList = proxy.getForObject(uriNomHotel, String.class);
+					
+					String uriListOffre = hotelAdresse+"/chambre"; 
+					String[] listOffre = proxy.getForObject(uriListOffre, String[].class);
+					ArrayList<String> listOffreAddToMap = new ArrayList<>(Arrays.asList(listOffre)); 
+					
+					if (! KeyNomHotelValueIdOffre.containsKey(hotelAddToList)) {
+						KeyNomHotelValueIdOffre.put(hotelAddToList, new ArrayList<String>());
+					}
+					if (! KeyNomHotelValueIdOffre.get(hotelAddToList).equals(listOffreAddToMap)) {
+						KeyNomHotelValueIdOffre.get(hotelAddToList).addAll(listOffreAddToMap); 		    
+					}
+			    	
+			    }
+				
+				String hotel; 
+				do {
+					System.out.println("Veuillez entrée un nom d'hotel parmi la liste proposée :\n"+KeyNomHotelValueIdOffre.keySet());
+					hotel = reader.readLine();
+				} while (! KeyNomHotelValueIdOffre.containsKey(hotel));
+
+				String offre; 
+				do {
+					System.out.println("Veuillez entrée une ville parmi la liste proposée :\n"+KeyNomHotelValueIdOffre.get(hotel).toString());
+					offre = reader.readLine();
+				} while (! KeyNomHotelValueIdOffre.get(hotel).contains(offre));
+
+					
+			    params.add("identifiantOffre", offre);
+			    
+			    String messagePrenom = "Merci d'entrée un prénom valide";  
+			    String prenomClient = null; 
+			    prenomClient = StringInputTestForPrenomEtNomClient(reader, messagePrenom);
+			    params.add("prenomClient", prenomClient);			   
+			    
+			    String messageNom= "Merci d'entrée un nom de Famille valide";  
+			    String nomClient = null; 
+			    nomClient = StringInputTestForPrenomEtNomClient(reader,  messageNom);
+			    params.add("nomClient", nomClient);
+			    
+			    String numeroCarte; 
+			    do {
+			      System.out.println("Veuillez entrer votre numéro à 16 chiffre de Carte Bancaire");
+			      numeroCarte = reader.readLine();
+			      if (!numeroCarte.matches("[0-9]+") || numeroCarte.length() != 16) {
+			        System.err.println("Un numéro de Carte Bancaire doit être composé de 16 chiffres, merci de réessayer votre entrée");
+			      }
+			    } while (!numeroCarte.matches("[0-9]+") || numeroCarte.length() != 16);
+			    params.add("numeroCarte", numeroCarte);
+			    
+			    String cryptogramme;
+			    do {
+			    System.out.println("Merci de bien vouloir entrer le cryptogramme de votre carte Bancaire ");
+			    cryptogramme = reader.readLine();
+			    if (!cryptogramme.matches("[0-9]+") || cryptogramme.length() != 3 || Integer.parseInt(cryptogramme) < 0 || Integer.parseInt(cryptogramme) > 999) {
+			    System.err.println("Un cryptogramme doit être composé de 3 chiffres et être compris entre 0 et 999, veuillez réessayer");
+			    }
+			    } while (!cryptogramme.matches("[0-9]+") || cryptogramme.length() != 3 || Integer.parseInt(cryptogramme) < 0 || Integer.parseInt(cryptogramme) > 999);
+			    
+			    cardExpirationInputProcessor = new CardExpirationInputProcessor(reader, 
+						"Merci d'entrer la date d'expiration au format (mm/yy) de votre carte après le ");
+				String carteExpiration = cardExpirationInputProcessor.stringProcess();
+			    params.add("cardDateExpiration", carteExpiration);
+			    
+				dateInputTest(reader);
+				
+				nbPersonInputTest(reader);
+				
+				String uri = localhostPort.get(hotel)+"/reservation"; 
+				System.out.println(uri);
+			    String response = proxy.postForObject(uri, params, String.class); 
+			    System.out.println(response);
+			    break;
+			}
+			case QUIT:
+				System.out.println("Bye...");
+				System.exit(0);
+			default:
+				System.err.println("Mauvaise entrée. Merci de bien vouloir réessayer.");
+				return; 
+	
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+//	private static void indentifiantAgenceInputTest (BufferedReader reader) throws IOException {
+//			do {
+//				integerInputProcessor = new IntegerInputProcessor(reader, 
+//						"Merci d'entrée un identifiant correct pour l'agence selectour");
+//				identifiantAgence = integerInputProcessor.process();
+//			}while(identifiantAgence != selectour.getIdAgence());			
+//	}
+//	
+//	private static void passwordAgenceInputTest (BufferedReader reader) throws IOException {
+//		do {
+//			System.out.println("Merci d'entrée le mot de passe correct de l'agence selectour");
+//			passwordAgenceToProxy = reader.readLine();
+//		} while (! passwordAgenceToProxy.equals(selectour.getPassword()));
+//	}
+//	
+	private static void dateInputTest (BufferedReader reader) throws IOException {
+			dateInputProcessor = new DateInputProcessorFirstDateArrivee(reader, 
+					"Veuillez entrer une date d'arrivée (jj-mm-yyyy) après le : ");
+			ArrayList<String> dateConsultationStockInput = new ArrayList<>();
+			dateConsultationStockInput.addAll(dateInputProcessor.date());
+			dateArriveeToProxy = dateConsultationStockInput.get(0);
+			dateDepartToProxy = dateConsultationStockInput.get(1);
+	}
+	
+	private static void nbPersonInputTest(BufferedReader reader) throws IOException {
+		integerInputProcessor = new IntegerInputProcessor(reader, 
+				"Merci d'entrée un nombre de personne qui doit être supérieur à 0"); 
+		do {
+			nbPersonToProxy = integerInputProcessor.process();
+		}while (nbPersonToProxy <= 0); 
+		
+	}
+	
+	private static String StringInputTestForPrenomEtNomClient (BufferedReader reader,String message) throws IOException {
+		while (true) {
+			System.out.println(message);
+			String nomOrPrenom = reader.readLine(); 
+			 if (nomOrPrenom.matches("^[a-zA-Z]+$")) { // vérifie qu'il n'y a que des lettres
+				    return nomOrPrenom;
+				  } else {
+				    System.out.println("Erreur : le nom ne doit contenir que des lettres et pas d'espaces ou de caractères spéciaux");
+				  }
+		}
+	}
+	
+	public static String getKeyByValue(HashMap<String, String> KeyNomHotelValueHotelAdress, String hotelAdress) {
+		String toReturn = null;
+	    for (Entry<String, String> entry :KeyNomHotelValueHotelAdress.entrySet()) {
+	        if (Objects.equals(hotelAdress, entry.getValue())) {
+	            toReturn = entry.getKey();
+	        }
+	    }
+	    return toReturn;
+	}
+}
+

@@ -1,0 +1,52 @@
+package hotel.rest.server;
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+
+import hotel.rest.server.model.AgencePartenaire;
+import hotel.rest.server.model.AgencePartenairePKID;
+import hotel.rest.server.model.CarteBancaire;
+import hotel.rest.server.model.Chambre;
+import hotel.rest.server.model.Client;
+import hotel.rest.server.model.Hotel;
+import hotel.rest.server.model.Reservation;
+import hotel.rest.server.repository.AgenceRepository;
+import hotel.rest.server.repository.HotelWebServiceURLRepository;
+
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@EntityScan(basePackages = {"hotel.rest.server.model"})
+public class Application implements CommandLineRunner{
+	
+	
+	// Repository
+	@Autowired
+	AgenceRepository agenceRepository;
+	
+	@Autowired
+	HotelWebServiceURLRepository hotelWebServiceURLRepository;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+	
+		Agence agence = new Agence(1, "Selectour", "sel_log", "selectour");
+		agenceRepository.save(agence);
+		
+		HotelWebServiceURL laVerrerieWebServiceURL = new HotelWebServiceURL("LaVerrerie", "http://localhost:8080/hotelservice/api/hotel/hotel/consultation/");
+		HotelWebServiceURL progressWebServiceURL = new HotelWebServiceURL("Progress", "http://localhost:5555/hotelservice/api/hotel/hotel/consultation/");
+		hotelWebServiceURLRepository.save(laVerrerieWebServiceURL);
+		hotelWebServiceURLRepository.save(progressWebServiceURL);
+		
+	}
+
+}

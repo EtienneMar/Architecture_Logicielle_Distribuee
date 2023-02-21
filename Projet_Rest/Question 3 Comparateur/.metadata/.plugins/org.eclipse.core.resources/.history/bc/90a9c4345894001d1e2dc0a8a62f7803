@@ -1,0 +1,68 @@
+package hotel.rest.server.controllers;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import hotel.rest.server.model.AgencePartenaire;
+import hotel.rest.server.model.Chambre;
+import hotel.rest.server.model.Hotel;
+import hotel.rest.server.model.Offre;
+import hotel.rest.server.services.ChambreService;
+import hotel.rest.server.services.HotelService;
+
+@RestController
+public class OffreController {
+	@Autowired
+	private HotelService hotelService;
+	
+	@Autowired 
+	private ChambreService chambreService;
+	
+	private static final String uri = "hotelservice/api";
+	
+
+	@GetMapping(uri+"/hotel/consultation/id_agence={identifiantAgence}/password_agence={passwordAgence}/date_arrivee={dateArrivee}/date_depart={dateDepart}"
+			+ "/nbPersonne={nbPersonne}/pays={pays}/ville={ville}/etoiles={etoiles}")
+	public ArrayList<Offre> consultationOffre(@PathVariable int identifiantAgence, @PathVariable String passwordAgence,
+			@PathVariable int nbPersonne, @PathVariable String dateArrivee, @PathVariable String dateDepart, 
+			@PathVariable String pays, @PathVariable String ville, @PathVariable int etoiles,
+			@PathVariable float prixMin, @PathVariable float prixMax) throws IOException{
+	
+		float coeffPromotion;
+		ArrayList<Offre> listOffreDispo = new ArrayList<>();
+		
+		Optional<Hotel> optHotel = hotelService.getHotelByPaysAndVilleAndEtoiles(pays, ville, etoiles); 
+		if (optHotel.isPresent()) {
+			
+			Hotel hotelPresent = optHotel.get();
+			 
+			Optional<AgencePartenaire> filterAgencePartenaire = hotelPresent.getAgencesPartenaire().stream()
+					.filter(agencePartenaire -> agencePartenaire.getIdAgence() == identifiantAgence
+					&& agencePartenaire.getAgencePartenairePKID().getPasswordAgence().equals(passwordAgence))
+					.findFirst();
+			if (filterAgencePartenaire.isPresent()) {
+				coeffPromotion = filterAgencePartenaire.get().getCoeffPromotion(); 
+			}else {
+				coeffPromotion = 1;
+			}
+
+			List<Chambre> listChambreDispo = chambreService.findChambreByDisponbilitee(dateArrivee, dateDepart, coeffPromotion, prixMin, prixMax, nbPersonne);
+			
+			for (Chambre chambre : listChambreDispo) {
+				Offre offre = new Offre(coeffPromotion, chambre);
+				listOffreDispo.add(offre);
+			}
+		
+		}
+		System.out.println(listOffreDispo.toString());
+		return listOffreDispo;
+	}
+	
+}

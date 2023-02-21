@@ -1,0 +1,362 @@
+package WebService;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		//création d'hotel et des chambres
+		Hotel ashotel = new Hotel("Ashotel",Etoiles.UNE);
+		ashotel.setAdresse(120, "Avenue du Chat", Ville.Paris);
+		Chambre chambre_as10 = new Chambre(10, 2, 60, ashotel);
+		Chambre chambre_as20 = new Chambre(20, 2, 60, ashotel);
+		Chambre chambre_as30 = new Chambre(30, 1, 60, ashotel);
+		
+		Hotel daysHotel = new Hotel("DaysHotel",Etoiles.DEUX);
+		daysHotel.setAdresse(10, "Route du Midi", Ville.Montpellier);
+		Chambre chambre_day10 = new Chambre(10, 3, 90, daysHotel);
+		Chambre chambre_day20 = new Chambre(20, 2, 90, daysHotel);
+		Chambre chambre_day30 = new Chambre(30, 1, 90, daysHotel);
+		
+		
+		Hotel euroHotel = new Hotel("EuroHotel",Etoiles.TROIS);
+		euroHotel.setAdresse(45, "Rue de la Courge", Ville.Lille);
+		Chambre chambre_eur10 = new Chambre(10, 4, 120, euroHotel);
+		Chambre chambre_eur20 = new Chambre(20, 2, 120, euroHotel);
+		Chambre chambre_eur30 = new Chambre(30, 1, 120, euroHotel);
+
+		
+		//Création des clients et des réservations associées:
+		Client dupond = new Client("Dupond", "Robert");
+		Reservation resa1_dupond = new Reservation("10-11-2023", "11-11-2023", 2, dupond);
+		Reservation resa1b_dupond = new Reservation("01-05-2023", "14-05-2023", 2, dupond);
+		Reservation resa2_dupond = new Reservation("10-12-2023", "16-12-2023", 2, dupond);
+		Reservation resa3_dupond = new Reservation("17-12-2023", "27-12-2023", 2, dupond);
+		//Pour test ajout de resa1_dupond a l'hotel daysHotel chambre n°10
+		addResaToChambre(chambre_day10, resa1_dupond);
+		addResaToChambre(chambre_day10, resa1b_dupond);
+		//Pour test ajout de resa2_dupond a l'hotel daysHotel chambre n°20
+		addResaToChambre(chambre_day20, resa2_dupond);		
+		//Pour test ajout de resa3_dupond a l'hotel daysHotel chambre n°30
+		addResaToChambre(chambre_day30, resa3_dupond);
+		
+		//pour test recherche d'une chambre avec resa1_dubois (Montpellier, 2 etoiles)
+		//devrait sortir uniquement la chambre n°20 de l'hotel daysHotel....
+		Client dubois = new Client("Dubois", "Philippe");
+		Reservation resa1_dubois = new Reservation("15-12-2023", "25-12-2023",3 , dubois);
+		
+		//Création de la liste regroupant tous les hotels :
+		ArrayList<Hotel> listHotel = new ArrayList<>();
+		listHotel.add(ashotel);
+		listHotel.add(daysHotel);
+		listHotel.add(euroHotel);
+		
+		//Création des agences de voyage
+		Agence selectour = new Agence("Selectour", "sel_log", "selectour");
+		Agence petitbudget = new Agence("Petit Budget", "pet_log", "petitbudget");
+		Agence promovacances = new Agence("Promovacances","prom_log", "promovacances");
+		Agence odysway = new Agence("Odysway", "ody_log", "odysway");
+		//Création de la liste de toute les agences connues:
+		ArrayList<Agence> listAgence = new ArrayList<>();
+		listAgence.add(selectour);
+		listAgence.add(petitbudget);
+		listAgence.add(promovacances);
+		listAgence.add(odysway);
+		
+		//Ajout des partenaires aux hotels (listePartenaires) en fonction de la remise
+		daysHotel.setAgenceRemise(selectour, 10);
+		daysHotel.setAgenceRemise(petitbudget, 20);
+		daysHotel.setAgenceRemise(promovacances, 5);
+		daysHotel.setAgenceRemise(odysway, 15);
+		
+		//afficherInfoChambreHotel(daysHotel);
+		
+		//Recherche avec la méthode Saisie :
+		saisieRecherche(listHotel, listAgence);
+
+		
+		
+		
+	}
+	
+	public static ArrayList<Chambre> rechercheChambre(ArrayList<Hotel> hotelI, Ville villeI, Etoiles etoilesI, Reservation reservationI, double prixMin, double PrixMax, Agence agenceI) {
+		ArrayList<Chambre> chambreResult = new ArrayList<Chambre>();
+		for (Hotel hotel : hotelI) {
+			if (hotel.getAdresse().getVille().equals(villeI) && (hotel.getEtoiles().equals(etoilesI))) {
+				double remise = (100 - hotel.getRemise(agenceI))/100;
+				System.out.println(remise);
+				for (Chambre chambre : hotel.getListChambres()) {
+					//si la liste de résa est vide pour cette chambre on ne vérifie pas les dates et on vérifie le nombre de place uniquement, puis 
+					//on ajoute la chambre à la liste de chambres libres si c'est ok.
+					if ((chambre.getListReservationsChambre().size() == 0) 
+							&& (chambre.getNbLits() >= reservationI.getNbLitsResa()) 
+							&& (prixMin <= chambre.getPrixChambre() && chambre.getPrixChambre() <= PrixMax)) {
+						chambreResult.add(chambre);
+					}
+					//Si la chambre possède une liste de réservation, alors il faudra vérifier chaque date de réservation et comparer
+					//avec les dates de reservation du client
+					else if (chambre.getListReservationsChambre().size() != 0){
+						boolean isAvailable = true;
+						for (Reservation reservationChambre : chambre.getListReservationsChambre()) {
+							if ( ! (reservationI.getDateDepart().isBefore(reservationChambre.getDateArrive())
+								|| reservationChambre.getDateDepart().isBefore(reservationI.getDateArrive()))
+								|| (chambre.getNbLits() < reservationI.getNbLitsResa())
+								|| (prixMin > (chambre.getPrixChambre()*remise) && (chambre.getPrixChambre()*remise) > PrixMax)){
+								isAvailable = false;
+							}
+						}
+						if (isAvailable) {
+						chambreResult.add(chambre);
+						}
+					}
+				}
+			}
+		}
+		if (chambreResult.size() == 0) {
+			System.out.println("Désolé mais il n'y a pas d'hotel dans la ville que vous recherchez "
+					+ "avec vos critères de réservation.");
+		}
+		return chambreResult;
+	}
+	
+	public static void afficherInfoChambreHotel(Hotel hotelI) {
+		String str = "--------------------------------\nInfos réservations Chambres\n--------------------------------\n";
+		ArrayList<Chambre> listChambre = hotelI.getListChambres();	
+		for (Chambre chambre : listChambre) {
+				str += chambre.toString()+"\n";
+					if (chambre.getListReservationsChambre().size() != 0) {
+						for (Reservation resa : chambre.getListReservationsChambre()) {
+							str += String.format("Arrivée : %s, Départ : %s\n", resa.getDateArrive().toString(), resa.getDateDepart().toString());
+						}
+					str += "\n";
+					}
+					else {
+						str += "Aucune réservation pour cette chambre.\n\n";
+					}
+		}
+		System.out.println(str);
+	}
+
+	public static void addResaToChambre(Chambre chambreI, Reservation resa) {
+		for (Chambre chambre : chambreI.getHotel().getListChambres()) {
+			if (chambre == chambreI) {
+				chambre.setReservationInListReservation(resa);
+			}
+		}
+	}
+	
+	public static void affiRetourListeChambreLibre(ArrayList<Chambre> listChambreLibre) {
+		String str = "-------------------------------------------------\n"
+				+ "Infos chambres libres trouvées\n"
+				+ "-------------------------------------------------\n";
+		for (Chambre chambre : listChambreLibre) {
+			str += String.format("%s, Chambre n°%d\n", chambre.getHotel(), chambre.getNumero());
+		}
+		System.out.println(str);
+	}
+	
+	public static String dateToString(LocalDate dateI) {
+		//pour afficher la date d'aujourd'hui au format jj-MM-yyyy en string :
+		DateTimeFormatter DateToString = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		return dateI.format(DateToString);
+	}
+
+	//Méthode de saisie permettant de renseigner les critères de recherche
+	public static void saisieRecherche(ArrayList<Hotel> listHotel, ArrayList<Agence> listAgence) {
+		Scanner input = new Scanner(System.in);
+		Ville villeRecherche = null;
+		String dateArr;
+		String dateDepart;
+		int nbPlaces;
+		double prixMini;
+		double prixMax;
+		Etoiles nbEtoileRecherche = null;
+		Reservation resa;
+		String logginI = "";
+		String passwordI;
+		Agence agenceLogged = null;
+		
+		boolean isDone = false;
+		//Boucle pour se logger en tant qu'agence (loggin et mot de passe): recherche di loggin dans toutes les agences
+		do {
+			try {
+				System.out.println("Veuillez entrer votre loggin.\n");
+				logginI = input.nextLine();
+				for (Agence agence : listAgence) {
+					if (agence.getLoggin().equals(logginI)) {
+						agenceLogged = agence;
+						isDone = true;
+					}
+				}
+				//Après une itération sur tous le loggin de toutes les agences, le loggin n'a pas été retrouvé :
+				if (! isDone) {
+					System.err.println("Erreur loggin - Mercie d'entrer à nouveau votre loggin.");
+				}
+			} catch (InputMismatchException e) {
+				System.err.println("Merci d'entrer votre loggin sous forme de chaine de caractère.");
+				//input.nextLine(); //Pour réinitialiser le contenut de input
+				}
+			} while (! isDone);
+		
+		//Boucle pour se logger en tant qu'agence (loggin et mot de passe): Vérification du mot de passe
+		isDone = false; //réinitialisation de isDone
+		do {
+			System.out.println("Vous êtes l'agence de voyage : "+ agenceLogged.getNomAgence());
+			try {
+				System.out.println("Veuillez entrer votre mot de passe.\n");
+				passwordI = input.nextLine();
+					if (agenceLogged.getPassword().equals(passwordI)) {
+						isDone = true;
+					}
+				//Après une vérification du mot de passe de l'agence (trouvé avec le loggin), si ce mot de passe est incorect :
+				if (! isDone) {
+					System.err.println("Erreur de saisie de mot pe passe - Mercie d'entrer à nouveau votre mot de passe.");
+				}
+			} catch (InputMismatchException e) {
+				System.err.println("Merci d'entrer votre mot de passe sous forme de chaine de caractère.");
+				//input.nextLine(); //Pour réinitialiser le contenut de input
+				}
+			} while (! isDone);
+		
+		
+		//Boucle pour paramètre enum Ville recherché
+		isDone = false; //réinitialisation de isDone
+		do {
+			try {
+				System.out.println("Veuillez choisir votre destination parmi la liste de ville possible.\n"
+				+ "Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux ou Lille ?");
+				villeRecherche = Ville.valueOf(input.next());
+				input.nextLine();
+				isDone = true;
+			} catch (IllegalArgumentException e) {
+				System.err.println("Merci de choisir une ville dans la liste.");
+				input.nextLine(); //Pour réinitialiser le contenut de input
+				}
+			} while (! isDone);
+		
+		//Boucle pour paramètre dateArr
+		//initialisation de la dateArr pour vérif dans condition while
+		dateArr = "01-01-2000";
+		LocalDate today = LocalDate.now();
+		
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate dateFormatedArr = LocalDate.parse(dateArr, dateTimeFormatter);
+		do {
+			try {
+				System.out.println("Veuillez entrer une date d'arrivée (jj-mm-yyyy) :");
+				dateArr = input.nextLine();
+				dateFormatedArr = LocalDate.parse(dateArr, dateTimeFormatter);
+				if (today.isAfter(dateFormatedArr)) {
+					String todayStr = dateToString(today);
+					System.err.println("Merci de renseigner une date d'arrivée qui se situe après le "
+							+ todayStr + " (date d'aujourd'hui).");
+				}
+			} catch (DateTimeParseException e){
+				System.err.println("Entrer une date sous la forme jj-mm-yyyy, date qui ne peut être"
+						+ " inférieur à la date d'aujourd'hui");
+				input.nextLine(); //Pour réinitialiser le contenut de input
+			}
+		}while(today.isAfter(dateFormatedArr));
+		
+		
+		//Boucle pour paramètre dateDepart
+		//initialisation de la dateDepart pour vérif dans condition while
+		dateDepart = dateArr;
+		LocalDate dateFormatedDepart = LocalDate.parse(dateDepart, dateTimeFormatter);
+		do {
+			try {
+				System.out.println("Veuillez entrer une date de départ (jj-mm-yyyy), date qui ne peut être"
+						+ " inférieur à la date d'arrivée.");
+				dateDepart = input.nextLine();
+				dateFormatedDepart = LocalDate.parse(dateDepart, dateTimeFormatter);
+				if (dateFormatedDepart.isBefore(dateFormatedArr) || dateFormatedDepart.isEqual(dateFormatedArr)) {
+					String ArriveStr = dateToString(dateFormatedArr);
+					System.err.println("Votre date de départ doit être après votre date d'arrivée, "
+							+ "soit après le "+ ArriveStr);
+				}
+			} catch (DateTimeParseException e) {
+				System.err.println("Entrer un entier sous la forme jj-mm-yyyy, date qui ne peut être"
+						+ " inférieur à la date d'arrivée.");
+				input.nextLine(); //Pour réinitialiser le contenut de input
+			}
+		} while(today.isAfter(dateFormatedDepart) || dateFormatedDepart.isBefore(dateFormatedArr) || dateFormatedDepart.isEqual(dateFormatedArr));
+//		System.out.println(today.isAfter(dateFormatedDepart));
+//		System.out.println(dateFormatedDepart.isBefore(dateFormatedArr));
+//		System.out.println(dateFormatedArr+"/"+dateFormatedDepart);
+		
+		
+		//Boucle pour le nombre de place recherchées
+		isDone = false; //réinitialisation de isDone
+		nbPlaces = 0;
+		do {
+			try {
+				System.out.println("Veuillez indiquer le nombre de places à réserver :");
+				nbPlaces = input.nextInt();
+				isDone = true;
+			} catch (InputMismatchException e) {
+				System.err.println("Erreur de saisie, veuillez entrer un entier.");
+				input.nextLine();
+			}
+		} while (! (isDone && nbPlaces > 0));
+		
+		//Boucle pour le prix mini
+		isDone = false; //réinitialisation de isDone
+		prixMini = 0;
+		do {
+			try {
+				System.out.println("Veuillez indiquer un intervalle de prix :\nPrix minimum :");
+				prixMini = input.nextDouble();
+				isDone = true;
+			} catch (InputMismatchException e) {
+				System.err.println("Erreur de saisie, veuillez entrer un réel.");
+				input.nextLine();
+			}
+		} while (! (isDone && prixMini >= 0));
+		
+		//Boucle pour le prix mini
+		isDone = false; //réinitialisation de isDone
+		prixMax = 0;
+		do {
+			try {
+				System.out.println("Veuillez indiquer un prix maximum (supérieur à " + prixMini +" euros) :");
+				prixMax = input.nextDouble();
+				isDone = true;
+			} catch (InputMismatchException e) {
+				System.err.println("Erreur de saisie, veuillez entrer un réel.");
+				input.nextLine();
+			}
+		} while (! (isDone && prixMax > prixMini));
+		
+		
+		//Boucle pour le nombre d'étoiles recherchées:
+		isDone = false; //réinitialisation de isDone
+		do {
+			try {
+				System.out.println("Quelle catégorie d'hotel recherchez-vous (nombres d'étoiles) ?.\n"
+				+ "UNE, DEUX, TROIS, QUATRE ou CINQ étoiles?");
+				nbEtoileRecherche = Etoiles.valueOf(input.next());
+				isDone = true;
+			} catch (IllegalArgumentException e) {
+				System.err.println("Merci de choisir un nombre d'étoiles dans la liste.");
+				input.nextLine(); //Pour réinitialiser le contenut de input
+				}
+			} while (! isDone);		
+				
+
+		
+		//Je peux alors créer ma réservation, pour le moment sans le client (grace au nouveau constructeur Reservation)
+		resa = new Reservation(dateArr, dateDepart, nbPlaces);
+		ArrayList<Chambre> chambreDispo = new ArrayList<>();
+		chambreDispo = rechercheChambre(listHotel, villeRecherche, nbEtoileRecherche, resa, prixMini, prixMax, agenceLogged);
+		affiRetourListeChambreLibre(chambreDispo);
+		
+		
+		input.close();
+	}
+}

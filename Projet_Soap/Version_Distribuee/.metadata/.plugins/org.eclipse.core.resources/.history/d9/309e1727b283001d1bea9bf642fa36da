@@ -1,0 +1,90 @@
+package web.service.server;
+
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.xml.ws.Endpoint;
+
+import web.service.model.Chambre;
+import web.service.model.Client;
+import web.service.model.Etoiles;
+import web.service.model.Hotel;
+import web.service.model.Reservation;
+import web.service.model.Ville;
+import web.service.model.infoAgence;
+import web.service.services.HotelRepository;
+import web.service.services.WebService1ConsultationImpl;
+import web.service.services.WebService2ReservationImpl;
+
+public class Server {
+
+	private static ArrayList<HotelRepository> hotelsToBind =  new ArrayList<>();
+	private static final String PathForChamberPicture = "./src/main/java/Image_Chambre/";
+	protected static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+	
+	public static void main(String[] args) throws IOException {
+	
+		datainitialise();
+		
+		Endpoint.publish("http://localhost:8889/HotelWebService1Consultation", new WebService1ConsultationImpl(hotelsToBind.get(0)));
+		Endpoint.publish("http://localhost:8889/HotelWebService2Reservation", new WebService2ReservationImpl(hotelsToBind.get(0)));
+		System.out.println("hotel 1 ready");
+		Endpoint.publish("http://localhost:4444/HotelWebService1Consultation", new WebService1ConsultationImpl(hotelsToBind.get(1)));
+		Endpoint.publish("http://localhost:4444/HotelWebService2Reservation", new WebService2ReservationImpl(hotelsToBind.get(1)));
+		System.out.println("hotel 2 ready");
+		
+	}
+		
+	private static void datainitialise() throws IOException {
+		Client Dupond = new Client("Dupond", "Robert");
+		Client Raïssanna = new Client("Slimane", "Raïssanna");
+		
+		
+		Hotel daysHotel = new Hotel("DaysHotel", Etoiles.DEUX);
+		daysHotel.setAdresse("France",10, "Route du Midi", Ville.MONTPELLIER);
+		
+		daysHotel.getListChambres().addAll(Arrays.asList(
+				new Chambre(1, 1, 2, 90, PathForChamberPicture+"pic1.jpg", daysHotel),
+				new Chambre(2, 2, 2, 77,  PathForChamberPicture+"pic2.jpg", daysHotel),
+				new Chambre(3, 3, 4, 90, PathForChamberPicture+"pic3.jpg", daysHotel)	
+				));
+		
+		daysHotel.getListChambres().get(0).getListReservationsChambre().addAll(Arrays.asList(
+				new Reservation(LocalDate.now().format(DATE_TIME_FORMATTER),( LocalDate.now().plusDays(1)).format(DATE_TIME_FORMATTER), 2, Dupond)));
+		
+		daysHotel.getListChambres().get(1).getListReservationsChambre().addAll(Arrays.asList(new Reservation("05-01-2023", "08-01-2023", 2, Raïssanna)));
+		
+		//Instantiation d'objet InfoAgence dans la liste des Agences partenaires
+		daysHotel.getListAgencesPartenaire().addAll(Arrays.asList(new infoAgence(1, "sel_log", "selectour", 10),
+																	new infoAgence(2, "trip_log", "tripavis", 20),
+																    new infoAgence(3, "via_log", "viahotel", 15)));
+		
+		Hotel laPaix = new Hotel("LaPaix", Etoiles.DEUX);
+		laPaix.setAdresse("France",20, "Rue de la Paix", Ville.MONTPELLIER);
+		
+		laPaix.getListChambres().addAll(Arrays.asList(
+				new Chambre(4, 10, 5, 225, PathForChamberPicture+"pic4.jpg", laPaix),
+				new Chambre(5, 20, 2, 140,  PathForChamberPicture+"pic5.jpg", laPaix),
+				new Chambre(6, 3, 2, 160, PathForChamberPicture+"pic6.jpg", laPaix)	
+				));
+
+//		
+		//Instantiation d'objet InfoAgence dans la liste des Agences partenaires
+		laPaix.getListAgencesPartenaire().addAll(Arrays.asList(new infoAgence(1, "sel_log", "selectour", 5),
+																	new infoAgence(2, "trip_log", "tripavis", 15),
+																    new infoAgence(3, "via_log", "viahotel", 25)));
+	
+		HotelRepository dayshotelRepo = new HotelRepository(daysHotel);
+		HotelRepository lapaixRepo = new HotelRepository(laPaix);
+		
+		hotelsToBind.add(lapaixRepo);
+		hotelsToBind.add(dayshotelRepo);
+	}
+}
+
+

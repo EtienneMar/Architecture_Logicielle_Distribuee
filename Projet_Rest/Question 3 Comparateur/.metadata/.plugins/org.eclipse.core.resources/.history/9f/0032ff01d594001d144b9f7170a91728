@@ -1,0 +1,158 @@
+package rest.agence.models;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Offre {
+	
+	private String nomAgence;
+	public String getNomAgence() {
+		return nomAgence;
+	}
+
+	public void setNomAgence(String nomAgence) {
+		this.nomAgence = nomAgence;
+	}
+
+	public String getAdresseHotel() {
+		return adresseHotel;
+	}
+
+	public void setAdresseHotel(String adresseHotel) {
+		this.adresseHotel = adresseHotel;
+	}
+
+	public int getNombreEtoilesHotel() {
+		return nombreEtoilesHotel;
+	}
+
+	public void setNombreEtoilesHotel(int nombreEtoilesHotel) {
+		this.nombreEtoilesHotel = nombreEtoilesHotel;
+	}
+
+	private String nomHotel;
+	private String adresseHotel;
+	private int nombreEtoilesHotel;
+	private ArrayList<String> disponibilitee = new ArrayList<>();	
+	private float prixChambreWithReduction;
+	private int identifiant; 
+	private int numero;
+	private int nbLits;	
+	private byte[] picOfChamber;
+	
+	public Offre(ArrayList<String> disponibilitee, String nomHotel, float prixChambreWithReduction, int identifiant,
+			int numero, int nbLits, byte[] picOfChamber) {
+		super();
+		this.disponibilitee = disponibilitee;
+		this.nomHotel = nomHotel;
+		this.prixChambreWithReduction = prixChambreWithReduction;
+		this.identifiant = identifiant;
+		this.numero = numero;
+		this.nbLits = nbLits;
+		this.picOfChamber = picOfChamber;
+	}
+
+	public byte[] getPicOfChamber() {
+		return picOfChamber;
+	}
+
+	public void setPicOfChamber(byte[] picOfChamber) {
+		this.picOfChamber = picOfChamber;
+	}
+
+	public ArrayList<String> getDisponibilitee() {
+		return disponibilitee;
+	}
+
+	public float getPrixChambreWithReduction() {
+		return prixChambreWithReduction;
+	}
+
+	public int getIdentifiant() {
+		return identifiant;
+	}
+
+	public String getNomHotel() {
+		return nomHotel;
+	}
+
+	public int getNbLits() {
+		return nbLits;
+	}
+
+	public void setDisponibilitee(ArrayList<String> disponibilitee) {
+		this.disponibilitee = disponibilitee;
+	}
+
+	public void setPrixChambreWithReduction(float prixChambreWithReduction) {
+		this.prixChambreWithReduction = prixChambreWithReduction;
+	}
+
+
+
+	public void setIdentifiant(int identifiant) {
+		this.identifiant = identifiant;
+	}
+
+
+
+	public void setNomHotel(String nomHotel) {
+		this.nomHotel = nomHotel;
+	}
+
+
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public void setNbLits(int nbLits) {
+		this.nbLits = nbLits;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Offre [disponibilitee=" + disponibilitee + ", nomHotel=" + nomHotel + ", prixChambreWithReduction="
+				+ prixChambreWithReduction + ", identifiant=" + identifiant + ", numero=" + numero + ", nbLits="
+				+ nbLits + ", picOfChamber=" + picOfChamber+ "]";
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(picOfChamber);
+		result = prime * result
+				+ Objects.hash(disponibilitee, identifiant, nbLits, nomHotel, numero, prixChambreWithReduction);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Offre other = (Offre) obj;
+		return Objects.equals(disponibilitee, other.disponibilitee) && identifiant == other.identifiant
+				&& nbLits == other.nbLits && Objects.equals(nomHotel, other.nomHotel) && numero == other.numero
+				&& Arrays.equals(picOfChamber, other.picOfChamber)
+				&& Float.floatToIntBits(prixChambreWithReduction) == Float
+						.floatToIntBits(other.prixChambreWithReduction);
+	}
+
+}

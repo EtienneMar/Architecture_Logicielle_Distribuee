@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.model.Offre"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.repository.AgenceRepository"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.services.AgenceService"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.model.Agence"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.Iterable"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.repository.HotelWebServiceURLRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.services.HotelWebServiceURLService"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="rest.agence.repository.AgenceRepository"/>
+    <fullyQualifiedTypeName name="rest.agence.repository.HotelWebServiceURLRepository"/>
+    <fullyQualifiedTypeName name="rest.agence.model.HotelWebServiceURL"/>
+    <fullyQualifiedTypeName name="rest.agence.model.Agence"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnoreProperties"/>
+    <fullyQualifiedTypeName name="rest.agence.models.Hotel"/>
+    <fullyQualifiedTypeName name="rest.agence.models.Offre"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
+    <fullyQualifiedTypeName name="rest.agence.models.Agence"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.SpringBootApplication"/>
+    <fullyQualifiedTypeName name="hotel.rest.server.model.HotelWebServiceURL"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.CommandLineRunner"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="agence.rest.server.model.Offre"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+</qualifiedTypeNameHistroy>

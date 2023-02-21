@@ -1,0 +1,14 @@
+package agence.rest.server.clientRestTemplate;
+
+@Component
+public class AgenceClientRestTemplate {
+
+		
+		@Bean
+		public RestTemplate generateRestTemplate(RestTemplateBuilder builder) {
+			return builder.build();
+		}
+	
+
+}
+

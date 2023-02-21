@@ -1,0 +1,21 @@
+2022-11-27 22:38:34,391 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-11-27 22:47:33,121 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-11-27 22:50:24,890 [Worker-12: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel.web.service.client:web.service.client:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Client\pom.xml.
+2022-11-27 22:50:25,434 [Worker-12: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel:web.service:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\pom.xml.
+2022-11-27 22:50:27,111 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service.client/src/main/java
+2022-11-27 22:50:27,112 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web.service.client/src/main/resources
+2022-11-27 22:50:27,114 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service.client/src/test/java
+2022-11-27 22:50:27,115 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web.service.client/src/test/resources
+2022-11-27 22:50:27,478 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service/src/main/java
+2022-11-27 22:50:27,480 [Worker-12: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web.service/src/test/java
+2022-11-27 22:50:27,716 [Worker-12: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 2 project(s) in 9 sec
+2022-11-27 22:50:28,659 [Worker-5: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-27 22:50:28,661 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\main\resources
+2022-11-27 22:50:28,667 [Worker-5: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-27 22:50:28,669 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\33683\Desktop\TP_SOAP_CHRISTOPHE_HOUBRON_ETIENNE_MARTIN\Version_Distribuee\Question_2\Maven_Question2\Maven_Question2_Server\src\test\resources
+2022-11-27 22:50:30,189 [Worker-5: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-27 22:50:30,205 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-11-27 22:50:30,209 [Worker-5: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-27 22:50:30,211 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-11-28 10:38:21,958 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-11-28 10:39:05,851 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

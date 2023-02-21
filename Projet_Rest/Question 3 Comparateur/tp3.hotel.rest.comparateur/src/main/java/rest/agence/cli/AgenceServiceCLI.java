@@ -1,0 +1,174 @@
+package rest.agence.cli;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import rest.agence.models.Offre;
+
+@Component
+public class AgenceServiceCLI extends AbstractMain implements CommandLineRunner{
+	//Attribut
+	@Autowired
+	private RestTemplate proxy;
+
+	//Attribut Commun aux deux webService
+	public static String passwordAgenceToProxy = null;
+	public static String dateArriveeToProxy = null;
+	public static String dateDepartToProxy = null;
+	public static int nbPersonToProxy;
+  
+	private static IntegerInputProcessor integerInputProcessor;
+	private static DateInputProcessorFirstDateArrivee dateInputProcessor;
+	
+	private static HashMap<String,String> localhostPort = new HashMap<>();
+	
+	//équivalent méthode main
+	@Override
+	public void run(String... args) throws Exception {
+		 BufferedReader inputReader; 
+		 String userInput = "";
+		 try {
+			inputReader = new BufferedReader(new InputStreamReader(System.in));
+			SetTestServiceURL(inputReader);
+			localhostPort.put("Selectour",SERVICE_URL+"6666/agence/api/");
+			localhostPort.put("TripDream",SERVICE_URL+"7777/agence/api/");
+			do {
+				menu(); 
+				userInput = inputReader.readLine();
+				processUserInput(inputReader, userInput, proxy);
+				Thread.sleep(3000);
+			} while (! userInput.equals(QUIT));
+			
+		} catch (IOException e ) {
+			e.printStackTrace();
+		} 
+	}
+	@Override
+	protected boolean validServiceUrl() {
+		return SERVICE_URL.equals("http://localhost:");
+	}
+
+	@Override
+	protected void menu() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(QUIT+".Quit."); 
+		builder.append("\n Taper 1. Pour comparer les Offres"); 
+		System.out.println(builder);
+	}
+	
+	private void processUserInput(BufferedReader reader, String userInput, RestTemplate proxy) {
+		try {
+			switch (userInput) {
+			case "1": {
+				System.out.println("CLI comparaison :");
+				
+				ArrayList<String> villeToSelect = new ArrayList<>();
+				
+			    for (String agenceAdress : localhostPort.values()) {
+					String uriNomPays = agenceAdress+"ville"; 
+					String[] villeAddToList = proxy.getForObject(uriNomPays, String[].class);
+	
+					for (String villeToAdd : Arrays.asList(villeAddToList))
+					{
+						if (! villeToSelect.contains(villeToAdd)) {
+							villeToSelect.add(villeToAdd);
+
+						}
+					}
+					
+			    }
+				String ville; 
+				do {
+					System.out.println("Veuillez entrée une ville parmi la liste proposée  :\n"+villeToSelect.toString());
+					ville = reader.readLine();
+				} while (! villeToSelect.contains(ville));
+				
+				dateInputTest(reader); 
+				
+				nbPersonInputTest(reader);
+				
+				integerInputProcessor = new IntegerInputProcessor(reader, 
+						"Quelle catégorie d'hotel recherchez-vous (nombres d'étoiles) : 1, 2, 3, 4 ou 5 étoiles ?");
+				int etoiles = 0;
+				do {
+					etoiles = integerInputProcessor.process();
+					if (etoiles <= 0 || etoiles >=6) {
+						System.err.println("Le nombre d'étoiles d'un hotel ne peut être compris qu'entre 1 et 5 !");
+					}
+				} while (etoiles <= 0 || etoiles >=6);
+
+				ArrayList<Offre> listOffreToGUI = new ArrayList<>();
+				for (String hotelAdress : localhostPort.values()) {
+					String uri = hotelAdress+"offre/ville="+ville+"/date_arrivee="+dateArriveeToProxy+"/date_depart="+dateDepartToProxy
+							+"/nbPersonne="+nbPersonToProxy+"/etoiles="+etoiles;
+					Offre [] listOffre = proxy.getForObject(uri, Offre[].class);
+					if (Arrays.asList(listOffre).isEmpty()) {
+						String nomAgence = getKeyByValue(localhostPort, hotelAdress); 
+						System.out.println("Pour l'hotel " + nomAgence + " désolé nous n'avons pas trouvée d'offre correspondant à vos critère de recherche");
+						System.out.println();
+					}else {
+						Arrays.asList(listOffre).forEach(System.out::println);
+						for (Offre offre : Arrays.asList(listOffre)) {
+							listOffreToGUI.add(offre);
+						}
+						listOffreToGUI.toString(); 
+						System.out.println();
+					}
+				}
+				
+				break;
+			}
+			
+			case QUIT:
+				System.out.println("Bye...");
+				System.exit(0);
+			default:
+				System.err.println("Mauvaise entrée. Merci de bien vouloir réessayer.");
+				return; 
+	
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	private static void dateInputTest (BufferedReader reader) throws IOException {
+			dateInputProcessor = new DateInputProcessorFirstDateArrivee(reader, 
+					"Veuillez entrer une date d'arrivée (jj-mm-yyyy) après le : ");
+			ArrayList<String> dateConsultationStockInput = new ArrayList<>();
+			dateConsultationStockInput.addAll(dateInputProcessor.date());
+			dateArriveeToProxy = dateConsultationStockInput.get(0);
+			dateDepartToProxy = dateConsultationStockInput.get(1);
+	}
+	
+	private static void nbPersonInputTest(BufferedReader reader) throws IOException {
+		integerInputProcessor = new IntegerInputProcessor(reader, 
+				"Merci d'entrée un nombre de personne qui doit être supérieur à 0"); 
+		do {
+			nbPersonToProxy = integerInputProcessor.process();
+		}while (nbPersonToProxy <= 0); 
+		
+	}
+	
+	public static String getKeyByValue(HashMap<String, String> KeyNomHotelValueHotelAdress, String hotelAdress) {
+		String toReturn = null;
+	    for (Entry<String, String> entry :KeyNomHotelValueHotelAdress.entrySet()) {
+	        if (Objects.equals(hotelAdress, entry.getValue())) {
+	            toReturn = entry.getKey();
+	        }
+	    }
+	    return toReturn;
+	}
+}
+

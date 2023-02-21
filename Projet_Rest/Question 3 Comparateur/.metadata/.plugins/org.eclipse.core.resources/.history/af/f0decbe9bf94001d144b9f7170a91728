@@ -1,0 +1,104 @@
+package hotel.rest.server.model;
+
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Hotel {
+	
+
+	//Attributs
+
+	private String nom;
+	
+	private int etoiles;
+
+	
+	private String ville;
+
+	private int numRue;
+
+	private String rue;
+
+	// ********************** Constructeurs **************************
+
+	public Hotel() {
+	}
+
+	public Hotel(String nom, int etoiles, String ville, int numRue, String rue) {
+		this.setNom(nom);
+		this.setEtoiles(etoiles);
+		this.setVille(ville);
+		this.setNumRue(numRue);
+		this.setRue(rue);
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getEtoiles() {
+		return etoiles;
+	}
+
+	public void setEtoiles(int etoiles) {
+		this.etoiles = etoiles;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public int getNumRue() {
+		return numRue;
+	}
+
+	public void setNumRue(int numRue) {
+		this.numRue = numRue;
+	}
+
+	public String getRue() {
+		return rue;
+	}
+
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "Hotel [nom=" + nom + ", etoiles=" + etoiles + ", ville=" + ville + ", numRue=" + numRue + ", rue=" + rue
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(etoiles, nom, numRue, rue, ville);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hotel other = (Hotel) obj;
+		return etoiles == other.etoiles && Objects.equals(nom, other.nom) && numRue == other.numRue
+				&& Objects.equals(rue, other.rue) && Objects.equals(ville, other.ville);
+	}
+
+}

@@ -1,0 +1,31 @@
+package agence.rest.server;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import hotel.rest.server.model.Agence;
+import hotel.rest.server.model.HotelWebServiceURL;
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		Agence agence = new Agence(1, "Selectour", "sel_log", "selectour");
+		agenceRepository.save(agence);
+		
+		HotelWebServiceURL laVerrerieWebServiceURL = new HotelWebServiceURL("LaVerrerie", "http://localhost:8080/hotelservice/api/hotel/hotel/consultation/");
+		HotelWebServiceURL progressWebServiceURL = new HotelWebServiceURL("Progress", "http://localhost:5555/hotelservice/api/hotel/hotel/consultation/");
+		hotelWebServiceURLRepository.save(laVerrerieWebServiceURL);
+		hotelWebServiceURLRepository.save(progressWebServiceURL);
+		
+	}
+	}
+
+}

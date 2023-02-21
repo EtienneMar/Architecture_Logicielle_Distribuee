@@ -1,0 +1,152 @@
+2022-12-29 14:54:07,996 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-29 14:58:27,575 [Worker-6: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel.webservice.rest:tp3.hotel.rest.client:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\pom.xml.
+2022-12-29 14:58:28,064 [Worker-6: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel.webservice.rest:tp3.hotel.rest:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\pom.xml.
+2022-12-29 14:58:28,407 [Worker-6: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: hotel.webservice.rest:tp3.hotel.rest:0.0.1-SNAPSHOT @ C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\pom.xml.
+2022-12-29 14:58:29,812 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /tp3.rest.hotel2/src/main/java
+2022-12-29 14:58:29,813 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /tp3.rest.hotel2/src/main/resources
+2022-12-29 14:58:29,814 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /tp3.rest.hotel2/src/main/resources
+2022-12-29 14:58:29,815 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /tp3.rest.hotel2/src/test/java
+2022-12-29 14:58:30,390 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /tp3.hotel.rest.client/src/main/java
+2022-12-29 14:58:30,391 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /tp3.hotel.rest.client/src/main/resources
+2022-12-29 14:58:30,392 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /tp3.hotel.rest.client/src/main/resources
+2022-12-29 14:58:30,394 [Worker-6: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /tp3.hotel.rest.client/src/test/java
+2022-12-29 14:58:31,320 [Worker-6: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 3 project(s) in 10 sec
+2022-12-29 14:58:34,453 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2022-12-29 14:58:34,515 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 14:58:34,522 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2022-12-29 14:58:36,333 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2022-12-29 14:58:36,338 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 14:58:36,345 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2022-12-29 14:58:37,317 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2022-12-29 14:58:37,321 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 14:58:37,328 [Worker-25: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2022-12-29 15:05:38,451 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,452 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,459 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2022-12-29 15:05:38,491 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,492 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,500 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2022-12-29 15:05:38,528 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,529 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2022-12-29 15:05:38,537 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:03:32,921 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-01-15 15:06:09,849 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:06:09,871 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:06:09,877 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:06:12,341 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:06:12,350 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:06:12,354 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:08:49,133 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:08:49,140 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:08:49,145 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:10:50,488 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:10:50,512 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:10:50,515 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:11:46,530 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:11:46,535 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:11:46,537 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:14:00,346 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:14:00,354 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:14:00,359 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:14:58,671 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:14:58,682 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:14:58,686 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:15:06,137 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:15:06,143 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:15:06,146 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:15:10,258 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:15:10,273 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:15:10,277 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:16:45,590 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:16:45,614 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:16:45,617 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:16:58,919 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:16:58,937 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:16:58,941 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:19:59,386 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:19:59,393 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:19:59,395 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:20:33,278 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:20:33,291 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:20:33,295 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:24:40,988 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:24:41,006 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:24:41,009 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 15:25:42,093 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:25:42,100 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:25:42,103 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:33:44,005 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:33:44,016 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:33:44,021 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:41:25,267 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:41:25,284 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:41:25,288 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:42:20,397 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:42:20,480 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:42:20,484 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:47:55,404 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:47:55,415 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:47:55,418 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:52:51,107 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:52:51,120 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:52:51,122 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:55:13,365 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:55:13,374 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:55:13,378 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources
+2023-01-15 15:58:22,523 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:58:22,530 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:58:22,532 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:58:30,634 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:58:30,654 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:58:30,657 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:58:53,920 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:58:53,926 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:58:53,928 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:59:04,369 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:59:04,411 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:59:04,414 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:59:43,419 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:59:43,428 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:59:43,430 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:59:44,509 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:59:44,520 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:59:44,521 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 15:59:54,791 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 15:59:54,847 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 15:59:54,848 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 16:00:39,097 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:00:39,103 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:00:39,106 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 16:00:40,133 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:00:40,138 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:00:40,140 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 16:01:07,707 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:01:07,714 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:01:07,717 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 16:01:09,781 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:01:09,789 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:01:09,791 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel2\src\test\resources
+2023-01-15 16:03:19,087 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:03:19,097 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:03:19,101 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:03:23,316 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:03:23,323 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:03:23,327 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:03:39,144 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:03:39,150 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:03:39,153 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:03:54,185 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:03:54,191 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:03:54,194 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:04:00,740 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:04:00,746 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:04:00,748 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:04:02,780 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:04:02,786 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:04:02,787 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:04:07,190 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:04:07,196 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:04:07,199 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.rest.hotel\src\test\resources
+2023-01-15 16:07:29,377 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-15 16:07:29,384 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-15 16:07:29,386 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\33683\Desktop\Projet Rest\Question 1 à 2\tp3.hotel.rest.client\src\test\resources

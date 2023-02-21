@@ -1,0 +1,34 @@
+package hotel.rest.server.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import hotel.rest.server.model.Hotel;
+import hotel.rest.server.services.HotelService;
+
+@RestController
+public class HotelController {
+
+	@Autowired
+	private HotelService hotelService;
+	private static final String uri = "hotelservice/api";
+
+	@GetMapping(uri+"/hotel/nomhotel")
+	public String getNomHotel () {
+		Hotel laVerrerie = hotelService.getHotelById("La Verrerie").get(); 
+		return laVerrerie.getNom(); 
+	}
+	
+	@GetMapping(uri+"/hotel/nompays")
+	public String getNomPays () {
+		Hotel laVerrerie = hotelService.getHotelById("La Verrerie").get(); 
+		return laVerrerie.getPays(); 
+	}
+	
+	@GetMapping(uri+"/hotel/nomville")
+	public String getNomVille () {
+		Hotel laVerrerie = hotelService.getHotelById("La Verrerie").get(); 
+		return laVerrerie.getVille(); 
+	}
+}

@@ -1,0 +1,18 @@
+package agence.rest.server.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import hotel.rest.server.model.HotelWebServiceURL;
+
+
+@Repository
+public interface HotelWebServiceURLRepository extends CrudRepository<HotelWebServiceURL, String>{
+	
+	@Query(value = "SELECT webServiceUrl FROM hotelWebService", nativeQuery = true)
+	List<String> getAllURL ();
+
+}

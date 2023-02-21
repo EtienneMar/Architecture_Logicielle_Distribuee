@@ -1,0 +1,5 @@
+package agence.rest.server.clientRestTemplate;
+
+public class AgenceClientRestTemplate {
+
+}
